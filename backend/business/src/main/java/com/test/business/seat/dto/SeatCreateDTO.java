@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SeatDto {
-
-    private Long id;
+public class SeatCreateDTO {
     private String seatNumber;
     private String grade;
-    private boolean available;
 }
