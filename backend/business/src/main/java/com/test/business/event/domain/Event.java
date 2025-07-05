@@ -1,6 +1,7 @@
 package com.test.business.event.domain;
 
 import com.test.business.schedule.domain.Schedule;
+import com.test.business.venue.domain.Venue;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,12 +17,16 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private String title;
     private String description;
-    private String venue;
 
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
+
+    @ToString.Exclude
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<Schedule> schedules;
 

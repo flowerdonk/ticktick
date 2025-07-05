@@ -16,11 +16,12 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id; // 사용자 ID
+    private Long id; // 사용자 ID
 
     private String username; // 사용자 이름
     private String email; // 사용자 이메일
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Reservation> reservations; // 사용자의 예약 목록
 

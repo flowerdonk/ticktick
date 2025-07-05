@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,16 +19,18 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private LocalDateTime time;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
-    private List<Seat> seats;
+    private List<Seat> seats = new ArrayList<>();
 
 
 }

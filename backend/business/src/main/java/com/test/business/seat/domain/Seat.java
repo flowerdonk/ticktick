@@ -17,17 +17,15 @@ public class Seat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     private String seatNumber;
     private String grade;
-    private boolean available;
+    private boolean available = true;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
-
-    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
 
 }
